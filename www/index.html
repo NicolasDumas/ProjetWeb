@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Jeu du 2048</title>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+    <script src="http://localhost:8866/socket.io/socket.io.js"></script>
+    <script src="/js/game.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/2048_32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/2048_96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/2048_16x16.png">
+    <link rel="stylesheet" type="text/css" href="style.css"></style>
+  </head>
+
+  <body>
+  <div id="container">
+
+    <!--Chat à gauche de l'écran-->
+      <div id="bg_scroller">
+        <div id="discution"></div>
+      </div>
+
+    <input id="data" placeholder="Écrire un message" />
+    <input type="button" id="datasend" value="send" style="display: none;"/>
+
+    <!--Partie droite de l'écran-->
+    <div id="board">
+    	
+      <!--Accueil-->
+    	 <div id="welcome" class="welcome">	
+    		<h1> Le jeu du 2048 </h1>
+    		<p> Tu peux jouer au 2048 en multijoueur grâce à ce site.<br/>
+          Les règles sont simples : chaque joueur déplace la grille du 2048 tour par tour et gagne des points<br/><br/>
+          Quand la grille est pleine, celui qui a le plus de points l'emporte</p>
+          <div id="stats">Il y a <b><span id="players"></span> </b>joueurs connectés.</div><br/>
+          <div id="error">&nbsp;</div>
+          <input type="text" id="nickname" placeholder="Ton pseudo"/>
+          <input type="button" value="Rentrer dans le lobby" id="join" />
+        </div>
+
+        <!--Salon de jeu-->
+      <div id="rooms">
+          <div class="header">
+            <h1>SALON DE JEU</h1>
+            <p style="text-align:center;">Voici le salon de jeu, si il est plein, tu seras spectateur.</p>
+          </div>
+          <br/>
+          <div id="roomcards"></div>
+      </div>
+
+      <!--Jeu-->
+      <div id="game">
+          <div class="header">
+            <div class="exit" id="exit" title="Revenir au Lobby"></div>
+            <h1 id="salon"></h1>
+            <table class="gameinfo">
+              <tr>
+                <td style="text-align:center" id="state">Attente de l'adversaire</td>
+                <td style="text-align:center" id="gamestate">&nbsp;</td>
+              </tr>
+            </table>
+          </div>
+
+          
+          <!--Plateau de jeu-->
+          <div id='gameboard'></div>
+
+          <div id="score">
+            <table class="scorejoueur">
+              <tr>
+                <td style="text-align: center" id="score1"></td>
+                <td></td>
+                <td style="text-align: center" id="score2"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="boutton">
+            <table class="tableboutton">
+              <tr>
+                <td></td>
+                <td style="text-align: center" id="butup"></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td style="text-align: center" id="butleft"></td>
+                <td style="text-align: center" id="butdown"></td>
+                <td style="text-align: center" id="butright"></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+
+      <!--Fin d'une partie-->
+      <div id="gameended">
+          <span id="matchdetails"></span>
+          <h1 id="conclusion"></h1>
+          <h2></h2>
+          <div id="finalgameboard"></div>
+          <h2></h2>
+          <span>Tu peux lancer une nouvelle partie dans <span id="countdown">5</span></span>
+      </div>
+
+    </div>
+
+  </div>
+  </body>   
+</html>
